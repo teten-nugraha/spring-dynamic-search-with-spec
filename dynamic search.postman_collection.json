@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "14fad06b-2b62-4579-850b-f6a4e990432f",
+		"name": "dynamic search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18682900"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/api/v1/search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"dataOption\":\"all\",\n    \"searchCriteriaList\":[\n       {\n          \"filterKey\":\"deptName\",\n          \"operation\":\"eq\",\n          \"value\":\"MARKETING\"\n       },\n       {\n          \"filterKey\":\"salary\",\n          \"operation\":\"lt\",\n          \"value\":2957\n       },\n       {\n          \"filterKey\":\"emplastNm\",\n          \"operation\":\"ne\",\n          \"value\":\"Stella\"\n       },\n       {\n          \"filterKey\":\"commission\",\n          \"operation\":\"gt\",\n          \"value\":0\n       },\n       {\n          \"filterKey\":\"empId\",\n          \"operation\":\"eq\",\n          \"value\":64989\n       }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/search",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the employees whose hobby is 'Football'",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 10,\n    \"searchFilter\": [],\n    \"sortOrder\": {\n        \"ascendingOrder\": [\n            \"firstName\"\n        ],\n        \"descendingOrder\": [\n            \"lastName\"\n        ]\n    },\n    \"joinColumnProps\": [\n        {\n            \"joinColumnName\": \"hobbies\",\n            \"searchFilter\": {\n                \"operator\": \"=\",\n                \"property\": \"hobby\",\n                \"value\": \"Football\"\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 10,\n    \"searchFilter\": [],\n    \"sortOrder\": {\n        \"ascendingOrder\": [\n            \"firstName\"\n        ],\n        \"descendingOrder\": [\n            \"lastName\"\n        ]\n    },\n    \"joinColumnProps\": [\n        {\n            \"joinColumnName\": \"hobbies\",\n            \"searchFilter\": {\n                \"operator\": \"=\",\n                \"property\": \"hobby\",\n                \"value\": \"Football\"\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Aug 2023 02:36:17 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"firstName\": \"Gopi\",\n        \"lastName\": \"Battu\",\n        \"age\": 30\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get employees whose hobby is \"Football\" or \"Blogging\"",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 10,\n    \"searchFilter\": [],\n    \"sortOrder\": {\n        \"ascendingOrder\": [\n            \"firstName\"\n        ],\n        \"descendingOrder\": [\n            \"lastName\"\n        ]\n    },\n    \"joinColumnProps\": [\n        {\n            \"joinColumnName\": \"hobbies\",\n            \"searchFilter\": {\n                \"operator\": \"IN\",\n                \"property\": \"hobby\",\n                \"value\": [\"Football\", \"Blogging\"]\n            }\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 10,\n    \"searchFilter\": [],\n    \"sortOrder\": {\n        \"ascendingOrder\": [\n            \"firstName\"\n        ],\n        \"descendingOrder\": [\n            \"lastName\"\n        ]\n    },\n    \"joinColumnProps\": [\n        {\n            \"joinColumnName\": \"hobbies\",\n            \"searchFilter\": {\n                \"operator\": \"IN\",\n                \"property\": \"hobby\",\n                \"value\": [\"Football\", \"Blogging\"]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Aug 2023 02:39:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"firstName\": \"Gopi\",\n        \"lastName\": \"Battu\",\n        \"age\": 30,\n        \"hobbies\": [\n            {\n                \"id\": 3,\n                \"hobby\": \"Football\"\n            },\n            {\n                \"id\": 4,\n                \"hobby\": \"Tennis\"\n            }\n        ]\n    },\n    {\n        \"id\": 1,\n        \"firstName\": \"Ram\",\n        \"lastName\": \"Gurram\",\n        \"age\": 32,\n        \"hobbies\": [\n            {\n                \"id\": 1,\n                \"hobby\": \"Blogging\"\n            },\n            {\n                \"id\": 2,\n                \"hobby\": \"Cricket\"\n            }\n        ]\n    },\n    {\n        \"id\": 4,\n        \"firstName\": \"Sai\",\n        \"lastName\": \"Praneet\",\n        \"age\": 30,\n        \"hobbies\": [\n            {\n                \"id\": 8,\n                \"hobby\": \"Cricket\"\n            },\n            {\n                \"id\": 7,\n                \"hobby\": \"Blogging\"\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"firstName\": \"Surendra\",\n        \"lastName\": \"Sami\",\n        \"age\": 32,\n        \"hobbies\": [\n            {\n                \"id\": 5,\n                \"hobby\": \"Cricket\"\n            },\n            {\n                \"id\": 6,\n                \"hobby\": \"Blogging\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get all the employees whose age is 32 and hobby is Cricket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"pageNumber\": 0,\n  \"pageSize\": 10,\n  \"searchFilter\": [\n    {\n      \"operator\": \"=\",\n      \"property\": \"age\",\n      \"value\": 32\n    }\n  ],\n  \"sortOrder\": {\n    \"ascendingOrder\": [\n      \"firstName\"\n    ],\n    \"descendingOrder\": [\n      \"lastName\"\n    ]\n  },\n  \"joinColumnProps\" : [\n  {\n    \"joinColumnName\" : \"hobbies\",\n    \"searchFilter\" : {\n      \"operator\": \"=\",\n      \"property\": \"hobby\",\n      \"value\": \"Cricket\"\n    }\n   }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNumber\": 0,\n    \"pageSize\": 10,\n    \"searchFilter\": [],\n    \"sortOrder\": {\n        \"ascendingOrder\": [\n            \"firstName\"\n        ],\n        \"descendingOrder\": [\n            \"lastName\"\n        ]\n    },\n    \"joinColumnProps\": [\n        {\n            \"joinColumnName\": \"hobbies\",\n            \"searchFilter\": {\n                \"operator\": \"IN\",\n                \"property\": \"hobby\",\n                \"value\": [\"Football\", \"Blogging\"]\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/employees",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employees"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Aug 2023 02:39:16 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"firstName\": \"Gopi\",\n        \"lastName\": \"Battu\",\n        \"age\": 30,\n        \"hobbies\": [\n            {\n                \"id\": 3,\n                \"hobby\": \"Football\"\n            },\n            {\n                \"id\": 4,\n                \"hobby\": \"Tennis\"\n            }\n        ]\n    },\n    {\n        \"id\": 1,\n        \"firstName\": \"Ram\",\n        \"lastName\": \"Gurram\",\n        \"age\": 32,\n        \"hobbies\": [\n            {\n                \"id\": 1,\n                \"hobby\": \"Blogging\"\n            },\n            {\n                \"id\": 2,\n                \"hobby\": \"Cricket\"\n            }\n        ]\n    },\n    {\n        \"id\": 4,\n        \"firstName\": \"Sai\",\n        \"lastName\": \"Praneet\",\n        \"age\": 30,\n        \"hobbies\": [\n            {\n                \"id\": 8,\n                \"hobby\": \"Cricket\"\n            },\n            {\n                \"id\": 7,\n                \"hobby\": \"Blogging\"\n            }\n        ]\n    },\n    {\n        \"id\": 3,\n        \"firstName\": \"Surendra\",\n        \"lastName\": \"Sami\",\n        \"age\": 32,\n        \"hobbies\": [\n            {\n                \"id\": 5,\n                \"hobby\": \"Cricket\"\n            },\n            {\n                \"id\": 6,\n                \"hobby\": \"Blogging\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		}
+	]
+}
