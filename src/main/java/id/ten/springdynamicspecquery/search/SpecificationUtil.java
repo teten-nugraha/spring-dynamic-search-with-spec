@@ -100,6 +100,9 @@ public class SpecificationUtil {
             case "NotNull":
                 predicates.add(criterailBuilder.isNotNull(expression));
                 break;
+            case "NotIN":
+                predicates.add(criterailBuilder.in(expression).value(searchFilter.getValue()).not());
+                break;
             default:
                 System.out.println("Predicate is not matched");
                 throw new IllegalArgumentException(searchFilter.getOperator() + " is not a valid predicate");
